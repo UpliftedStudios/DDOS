@@ -142,7 +142,7 @@ class DetailVC: UIViewController {
 
 extension NSMutableAttributedString {
     @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
-        let attrs: [NSAttributedStringKey: Any] = [.font: UIFont.boldSystemFont(ofSize: 16)]
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 16)]
         let boldString = NSMutableAttributedString(string:text, attributes: attrs)
         append(boldString)
         
@@ -150,7 +150,7 @@ extension NSMutableAttributedString {
     }
     
     @discardableResult func italics(_ text: String) -> NSMutableAttributedString {
-        let attrs: [NSAttributedStringKey: Any] = [.font: UIFont.italicSystemFont(ofSize: 16)]
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.italicSystemFont(ofSize: 16)]
         let italicString = NSMutableAttributedString(string: text, attributes: attrs)
         append(italicString)
         
