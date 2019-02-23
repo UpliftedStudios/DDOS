@@ -58,8 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				A9C65F3F20D0C09C003D1E0D /* Constants.swift */,
-				A9C65F2A20D0B603003D1E0D /* AppDelegate.swift */,
 				A90C572620E5EA6200AF3543 /* test.json */,
+				A9C65F2A20D0B603003D1E0D /* AppDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -77,8 +77,8 @@
 			children = (
 				A9C65F2C20D0B603003D1E0D /* MainVC.swift */,
 				A93A10CF20D202E2002B58B0 /* DetailVC.swift */,
-				A984E18A20D0C1A700199231 /* WebVC.swift */,
 				EDCC74C021249A0400FBE0E5 /* CalendarVC.swift */,
+				A984E18A20D0C1A700199231 /* WebVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
