@@ -357,7 +357,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cx1-J4-VMe">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="662.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="662"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sime-basioli-332858-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="iuj-OP-KP9">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
@@ -366,9 +366,9 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WNW-Rs-DCC">
-                                                <rect key="frame" x="12" y="230" width="351" height="417.5"/>
+                                                <rect key="frame" x="12" y="230" width="351" height="417"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-Hl-dVX">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-Hl-dVX">
                                                         <rect key="frame" x="0.0" y="0.0" width="351" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPW-xA-a3v">
@@ -397,7 +397,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IS6-ky-3WY">
-                                                        <rect key="frame" x="0.0" y="30" width="351" height="387.5"/>
+                                                        <rect key="frame" x="0.0" y="30" width="351" height="387"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMk-1D-akU">
                                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="41"/>
@@ -409,20 +409,20 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-if-2tK">
-                                                                <rect key="frame" x="0.0" y="61" width="351" height="29"/>
+                                                                <rect key="frame" x="0.0" y="61" width="351" height="28.5"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="SCRIPTURE">
                                                                         <attributes>
                                                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                            <font key="NSFont" size="25" name="Helvetica-LightOblique"/>
-                                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            <font key="NSFont" size="25" name="Georgia-Italic"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
                                                                 </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BODY" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plE-Qh-csR">
-                                                                <rect key="frame" x="0.0" y="110" width="351" height="237"/>
+                                                                <rect key="frame" x="0.0" y="109.5" width="351" height="237"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="237" id="IFu-qC-xTU"/>
                                                                 </constraints>
@@ -431,7 +431,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's pray --" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boU-Ez-Udc">
-                                                                <rect key="frame" x="0.0" y="367" width="351" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="366.5" width="351" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -439,6 +439,9 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="xf5-Hl-dVX" firstAttribute="width" secondItem="WNW-Rs-DCC" secondAttribute="width" id="qrp-9E-tRv"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
