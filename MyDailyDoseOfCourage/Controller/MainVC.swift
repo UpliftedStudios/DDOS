@@ -19,7 +19,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var yesterdayTitleLbl: UILabel!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
     
-    
     @IBOutlet weak var sideMenu: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
@@ -35,24 +34,22 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     let formattedString = NSMutableAttributedString()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getJsonData()
     }
+    
 
+    //MARK: BUTTON FUNCTIONS
     @IBAction func todayBtnPressed(_ sender: Any) {
-        
             performSegue(withIdentifier: "todayBtnSegue", sender: nil)
     }
-
     @IBAction func tomorrowBtnPressed(_ sender: Any) {
-
             performSegue(withIdentifier: "tomorrowBtnSegue", sender: nil)
     }
-
     @IBAction func yesterdayBtnPressed(_ sender: Any) {
-        
             performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil)
     }
     
@@ -75,23 +72,14 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         }
     }
     
-
-    
     @IBAction func calendarBtnTapped(_ sender: Any) {
         
-//        let vc = CalendarVC()
-//        vc.modalPresentationStyle = UIModalPresentationStyle.popover
-//        vc.preferredContentSize = CGSize(width: 200, height: 200)
-//        
-//        present(vc, animated: true, completion: nil)
-//        
-//        let popoverPresentationController = vc.popoverPresentationController
-//        popoverPresentationController?.sourceView = view
-//        popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 200, height: 200)
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        dateFormatter.dateFormat = "MMMM dd"
+        print(dateFormatter.string(from: date))
         
         if segue.identifier == "todayBtnSegue" {
             
@@ -100,6 +88,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = todayScriptureLbl.text
             destination.entryBody = todayBodyData
             destination.entryPrayer = todayPrayerData
+            destination.displayDate = dateFormatter.string(from: date)
             
         } else if segue.identifier == "tomorrowBtnSegue" {
             
@@ -108,6 +97,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = tomorrowScriptureLbl.text
             destination.entryBody = tomorrowBodyData
             destination.entryPrayer = tomorrowPrayerData
+            destination.displayDate = dateFormatter.string(from: tomorrow!)
             
         } else if segue.identifier == "yesterdayBtnSegue" {
             
@@ -116,7 +106,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = yesterdayScriptureLbl.text
             destination.entryBody = yesterdayBodyData
             destination.entryPrayer = yesterdayPrayerData
-            
+            destination.displayDate = dateFormatter.string(from: yesterday!)
+
         } else if segue.identifier == "tfhSegue" {
             
             let vc = segue.destination as! WebVC
@@ -134,8 +125,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             
         } else if segue.identifier == "popoverSegue" {
             
-            //let vc = CalendarVC()
-            //vc.monthLbl.text = months[month]
             let popoverViewController = segue.destination as! CalendarVC
             popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
             popoverViewController.popoverPresentationController?.delegate = self

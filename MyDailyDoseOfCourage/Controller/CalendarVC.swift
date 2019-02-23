@@ -18,7 +18,8 @@ class CalendarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCalendarView()
+        collectionView.scrollToDate( Date() )
+        
         }
     
     func setupCalendarView() {

@@ -25,13 +25,13 @@ class DetailVC: UIViewController {
     var entryScripture: String?
     var entryBody: String?
     var entryPrayer: String?
-    //var displayDate: String?
+    var displayDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dateFormatter.dateFormat = "MMMM dd"
-        dateLbl.text = dateFormatter.string(from: date)
+        dateLbl.text = displayDate
         
         if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer {
             
@@ -59,7 +59,6 @@ class DetailVC: UIViewController {
     
     @IBAction func yesterdayBtnTapped(_ sender: Any) {
         
-
         self.loadView()
         
         guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
@@ -72,7 +71,7 @@ class DetailVC: UIViewController {
             dateFormatter.dateFormat = "MMMM-dd"
             
             let yesterdayString = dateFormatter.string(from: yesterday!)
-            //displayDate = yesterdayString
+            //dateLbl.text = 
             
             guard let array = json as? [String: Any] else { return }
             guard let yesterday = array["\(yesterdayString)"] as? [String: String] else { return }
@@ -88,7 +87,7 @@ class DetailVC: UIViewController {
             bodyLbl.text = yesterdayBody
             
             formattedString
-                .bold("Let's pray - ")
+                //.bold("Let's pray - ")
                 .italics("\(yesterdayPrayer)")
             
             prayerLbl.attributedText = formattedString
