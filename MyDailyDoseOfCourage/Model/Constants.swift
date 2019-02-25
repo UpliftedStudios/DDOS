@@ -28,16 +28,18 @@ let facebookUrl = "https://www.facebook.com/ETheFathersHouse"
 let youtubeUrl = "https://www.youtube.com/channel/UCSGkrJKji21ak91LhKR8jRQ/videos"
 
 // MARK: TIME RELATED OBJECTS
-var date = Date()
-var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)
-var yesterday = Calendar.current.date(byAdding: .day, value: -1, to: date)
+var today = ""
+var tomorr = ""
+var yester = ""
+var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+var yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
 var dateFormatter = DateFormatter()
 
 // MARK: CALENDAR OBJECTS
 var calendar = Calendar.current
-var day = calendar.component(.day, from: date)
-var weekday = calendar.component(.weekday, from: date) - 1
-var month = calendar.component(.month, from: date) - 1
+var day = calendar.component(.day, from: Date())
+var weekday = calendar.component(.weekday, from: Date()) - 1
+var month = calendar.component(.month, from: Date()) - 1
 
 
 // MARK: CALENDAR DATA ARRAYS
