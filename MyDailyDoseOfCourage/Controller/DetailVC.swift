@@ -25,41 +25,19 @@ class DetailVC: UIViewController {
     var entryScripture: String?
     var entryBody: String?
     var entryPrayer: String?
-    var displayDate: String?
+    var entryDate: String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateFormatter.dateFormat = "MMMM dd"
-        dateLbl.text = displayDate
-        
-        if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer {
-            
-            titleLbl.text = displayTitle
-            titleLbl.sizeToFit()
-            titleLbl.layoutIfNeeded()
-            
-            scriptureLbl.text = displayScripture
-            scriptureLbl.sizeToFit()
-            scriptureLbl.layoutIfNeeded()
-            
-            bodyLbl.text = displayBody
-            bodyLbl.sizeToFit()
-            bodyLbl.layoutIfNeeded()
-            
-            formattedString
-                .bold("Let's pray - ")
-                .italics("\(displayPrayer)")
-            
-            prayerLbl.attributedText = formattedString
-            prayerLbl.sizeToFit()
-            prayerLbl.layoutIfNeeded()
-        }
+
 }
     
     @IBAction func yesterdayBtnTapped(_ sender: Any) {
-        
-        self.loadView()
         
         guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
@@ -70,39 +48,34 @@ class DetailVC: UIViewController {
             
             dateFormatter.dateFormat = "MMMM-dd"
             
-            let yesterdayString = dateFormatter.string(from: yesterday!)
-            //dateLbl.text = 
-            
             guard let array = json as? [String: Any] else { return }
-            guard let yesterday = array["\(yesterdayString)"] as? [String: String] else { return }
+
             
-            //MARK: Yesterday items
-            guard let yesterdayTitle = yesterday["title"] else { return }
-            guard let yesterdayScripture = yesterday["scripture"] else { return }
-            guard let yesterdayBody = yesterday["body"] else { return }
-            guard let yesterdayPrayer = yesterday["prayer"] else { return }
-            
-            titleLbl.text = yesterdayTitle
-            scriptureLbl.text = yesterdayScripture
-            bodyLbl.text = yesterdayBody
-            
-            formattedString
-                //.bold("Let's pray - ")
-                .italics("\(yesterdayPrayer)")
-            
-            prayerLbl.attributedText = formattedString
-            
-            //dateLbl.text = displayDate
-            
-            
+//            let yesterdayString = dateFormatter.string(from: yesterday!)
+//
+//            guard let yesterday = array["\(yesterdayString)"] as? [String: String] else { return }
+//
+//            //MARK: Yesterday items
+//            guard let yesterdayTitle = yesterday["title"] else { return }
+//            guard let yesterdayScripture = yesterday["scripture"] else { return }
+//            guard let yesterdayBody = yesterday["body"] else { return }
+//            guard let yesterdayPrayer = yesterday["prayer"] else { return }
+//
+//            titleLbl.text = yesterdayTitle
+//            scriptureLbl.text = yesterdayScripture
+//            bodyLbl.text = yesterdayBody
+//
+//            formattedString
+//                .italics("\(yesterdayPrayer)")
+//
+//            prayerLbl.attributedText = formattedString
+//
         } catch  {
             print(error)
         }
     }
     
     @IBAction func tomorrowBtnTapped(_ sender: Any) {
-        
-        self.loadView()
         
         guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
@@ -135,6 +108,34 @@ class DetailVC: UIViewController {
             
         } catch  {
             print(error)
+        }
+    }
+    
+    func getData() {
+        dateFormatter.dateFormat = "MMMM dd"
+        
+        if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer, let displayDate = entryDate {
+            
+            titleLbl.text = displayTitle
+            titleLbl.sizeToFit()
+            titleLbl.layoutIfNeeded()
+            
+            scriptureLbl.text = displayScripture
+            scriptureLbl.sizeToFit()
+            scriptureLbl.layoutIfNeeded()
+            
+            bodyLbl.text = displayBody
+            bodyLbl.sizeToFit()
+            bodyLbl.layoutIfNeeded()
+            
+            formattedString
+                .bold("Let's pray - ")
+            
+            prayerLbl.text = displayPrayer
+            prayerLbl.sizeToFit()
+            prayerLbl.layoutIfNeeded()
+            
+            dateLbl.text = displayDate
         }
     }
 }

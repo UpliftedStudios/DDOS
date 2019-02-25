@@ -37,7 +37,9 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(calendar)
+        print(day)
+        print(month)
         getJsonData()
     }
     
@@ -79,7 +81,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         dateFormatter.dateFormat = "MMMM dd"
-        print(dateFormatter.string(from: date))
+        print(dateFormatter.string(from: Date()))
         
         if segue.identifier == "todayBtnSegue" {
             
@@ -88,7 +90,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = todayScriptureLbl.text
             destination.entryBody = todayBodyData
             destination.entryPrayer = todayPrayerData
-            destination.displayDate = dateFormatter.string(from: date)
+            destination.entryDate = dateFormatter.string(from: Date())
             
         } else if segue.identifier == "tomorrowBtnSegue" {
             
@@ -97,7 +99,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = tomorrowScriptureLbl.text
             destination.entryBody = tomorrowBodyData
             destination.entryPrayer = tomorrowPrayerData
-            destination.displayDate = dateFormatter.string(from: tomorrow!)
+            destination.entryDate = dateFormatter.string(from: tomorrow!)
             
         } else if segue.identifier == "yesterdayBtnSegue" {
             
@@ -106,7 +108,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = yesterdayScriptureLbl.text
             destination.entryBody = yesterdayBodyData
             destination.entryPrayer = yesterdayPrayerData
-            destination.displayDate = dateFormatter.string(from: yesterday!)
+            destination.entryDate = dateFormatter.string(from: yesterday!)
 
         } else if segue.identifier == "tfhSegue" {
             
@@ -153,7 +155,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             
             dateFormatter.dateFormat = "MMMM-dd"
-            let todayString = dateFormatter.string(from: date)
+            let todayString = dateFormatter.string(from: Date())
             let tomorrowString = dateFormatter.string(from: tomorrow!)
             let yesterdayString = dateFormatter.string(from: yesterday!)
             
