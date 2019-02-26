@@ -25,10 +25,12 @@ class DetailVC: UIViewController {
     var entryScripture: String?
     var entryBody: String?
     var entryPrayer: String?
-    var entryDate: String?
+    var entryDate: Date?
+    var date: String?
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
+        dateFormatter.dateFormat = "MMMM-dd"
     }
     
     override func viewDidLoad() {
@@ -39,18 +41,22 @@ class DetailVC: UIViewController {
     
     @IBAction func yesterdayBtnTapped(_ sender: Any) {
         
-        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
+        dateFormatter.dateFormat = "MMMM-dd"
+        entryDate = Calendar.current.date(byAdding: .day, value: -1, to: entryDate!)
+        print(dateFormatter.string(from: entryDate!))
         
-        do {
-            let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
-            dateFormatter.dateFormat = "MMMM-dd"
-            
-            guard let array = json as? [String: Any] else { return }
-
-            
+//        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
+//        let url = URL(fileURLWithPath: path)
+//
+//        do {
+//            let data = try Data(contentsOf: url)
+//            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+//
+//            dateFormatter.dateFormat = "MMMM-dd"
+//
+//            guard let array = json as? [String: Any] else { return }
+//
+//
 //            let yesterdayString = dateFormatter.string(from: yesterday!)
 //
 //            guard let yesterday = array["\(yesterdayString)"] as? [String: String] else { return }
@@ -70,45 +76,48 @@ class DetailVC: UIViewController {
 //
 //            prayerLbl.attributedText = formattedString
 //
-        } catch  {
-            print(error)
-        }
+//        } catch  {
+//            print(error)
+//        }
     }
     
     @IBAction func tomorrowBtnTapped(_ sender: Any) {
+        dateFormatter.dateFormat = "MMMM-dd"
+        entryDate = Calendar.current.date(byAdding: .day, value: 1, to: entryDate!)
+        print(dateFormatter.string(from: entryDate!))
         
-        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
-            dateFormatter.dateFormat = "MMMM-dd"
-            
-            let tomorrowString = dateFormatter.string(from: tomorrow!)
-            print(tomorrowString)
-            //displayDate = tomorrowString
-            
-            guard let array = json as? [String: Any] else { return }
-            guard let tomorrow = array["\(tomorrowString)"] as? [String: String] else { return }
-            
-            //MARK: Tomorrow items
-            guard let tomorrowTitle = tomorrow["title"] else { return }
-            guard let tomorrowScripture = tomorrow["scripture"] else { return }
-            guard let tomorrowBody = tomorrow["body"] else { return }
-            guard let tomorrowPrayer = tomorrow["prayer"] else { return }
-
-            
-            titleLbl.text = tomorrowTitle
-            scriptureLbl.text = tomorrowScripture
-            bodyLbl.text = tomorrowBody
-            prayerLbl.text = tomorrowPrayer
-            //ateLbl.text = displayDate
-            
-        } catch  {
-            print(error)
-        }
+//        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
+//        let url = URL(fileURLWithPath: path)
+//
+//        do {
+//            let data = try Data(contentsOf: url)
+//            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+//
+//            dateFormatter.dateFormat = "MMMM-dd"
+//
+//            let tomorrowString = dateFormatter.string(from: tomorrow!)
+//            print(tomorrowString)
+//            //displayDate = tomorrowString
+//
+//            guard let array = json as? [String: Any] else { return }
+//            guard let tomorrow = array["\(tomorrowString)"] as? [String: String] else { return }
+//
+//            //MARK: Tomorrow items
+//            guard let tomorrowTitle = tomorrow["title"] else { return }
+//            guard let tomorrowScripture = tomorrow["scripture"] else { return }
+//            guard let tomorrowBody = tomorrow["body"] else { return }
+//            guard let tomorrowPrayer = tomorrow["prayer"] else { return }
+//
+//
+//            titleLbl.text = tomorrowTitle
+//            scriptureLbl.text = tomorrowScripture
+//            bodyLbl.text = tomorrowBody
+//            prayerLbl.text = tomorrowPrayer
+//            //ateLbl.text = displayDate
+//
+//        } catch  {
+//            print(error)
+//        }
     }
     
     func getData() {
@@ -135,7 +144,7 @@ class DetailVC: UIViewController {
             prayerLbl.sizeToFit()
             prayerLbl.layoutIfNeeded()
             
-            dateLbl.text = displayDate
+            dateLbl.text = dateFormatter.string(from: displayDate)
         }
     }
 }
