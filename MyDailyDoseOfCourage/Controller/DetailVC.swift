@@ -20,6 +20,7 @@ class DetailVC: UIViewController {
     @IBOutlet weak var contentView: UIView!
     
     let formattedString = NSMutableAttributedString()
+    let newFormattedString = NSMutableAttributedString()
     
     var entryTitle: String?
     var entryScripture: String?
@@ -28,63 +29,19 @@ class DetailVC: UIViewController {
     var entryDate: Date?
     var date: String?
     
-    override func viewWillAppear(_ animated: Bool) {
-        showData()
-        dateFormatter.dateFormat = "MMMM-dd"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
+        showData()
 }
     
     @IBAction func yesterdayBtnTapped(_ sender: Any) {
-        
-        dateFormatter.dateFormat = "MMMM-dd"
         entryDate = Calendar.current.date(byAdding: .day, value: -1, to: entryDate!)
         print(dateFormatter.string(from: entryDate!))
         
         getJson()
-        
-//        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
-//        let url = URL(fileURLWithPath: path)
-//
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-//
-//            dateFormatter.dateFormat = "MMMM-dd"
-//
-//            guard let array = json as? [String: Any] else { return }
-//
-//
-//            let yesterdayString = dateFormatter.string(from: yesterday!)
-//
-//            guard let yesterday = array["\(yesterdayString)"] as? [String: String] else { return }
-//
-//            //MARK: Yesterday items
-//            guard let yesterdayTitle = yesterday["title"] else { return }
-//            guard let yesterdayScripture = yesterday["scripture"] else { return }
-//            guard let yesterdayBody = yesterday["body"] else { return }
-//            guard let yesterdayPrayer = yesterday["prayer"] else { return }
-//
-//            titleLbl.text = yesterdayTitle
-//            scriptureLbl.text = yesterdayScripture
-//            bodyLbl.text = yesterdayBody
-//
-//            formattedString
-//                .italics("\(yesterdayPrayer)")
-//
-//            prayerLbl.attributedText = formattedString
-//
-//        } catch  {
-//            print(error)
-//        }
     }
     
     @IBAction func tomorrowBtnTapped(_ sender: Any) {
-        dateFormatter.dateFormat = "MMMM-dd"
         entryDate = Calendar.current.date(byAdding: .day, value: 1, to: entryDate!)
         print(dateFormatter.string(from: entryDate!))
         
@@ -111,8 +68,9 @@ class DetailVC: UIViewController {
             
             formattedString
                 .bold("Let's pray - ")
+                .normal("\(displayPrayer)")
             
-            prayerLbl.text = displayPrayer
+            prayerLbl.attributedText = formattedString
             prayerLbl.sizeToFit()
             prayerLbl.layoutIfNeeded()
             
@@ -122,6 +80,8 @@ class DetailVC: UIViewController {
     
     func getJson() {
         
+        dateFormatter.dateFormat = "MMMM-dd"
+        
         guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
         
@@ -129,12 +89,7 @@ class DetailVC: UIViewController {
             let data = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             
-            var jsonDate = dateFormatter.string(from: entryDate!)
-            //dateFormatter.dateFormat = "MMMM-dd"
-            
-//            let tomorrowString = dateFormatter.string(from: tomorrow!)
-//            print(tomorrowString)
-//            //displayDate = tomorrowString
+            let jsonDate = dateFormatter.string(from: entryDate!)
             
             guard let array = json as? [String: Any] else { return }
             guard let tomorrow = array["\(jsonDate)"] as? [String: String] else { return }
@@ -145,12 +100,15 @@ class DetailVC: UIViewController {
             guard let tomorrowBody = tomorrow["body"] else { return }
             guard let tomorrowPrayer = tomorrow["prayer"] else { return }
             
-            
+            newFormattedString
+                .bold("Let's pray - ")
+                .normal(tomorrowPrayer)
+
             titleLbl.text = tomorrowTitle
             scriptureLbl.text = tomorrowScripture
             bodyLbl.text = tomorrowBody
-            prayerLbl.text = tomorrowPrayer
-            //ateLbl.text = displayDate
+            prayerLbl.attributedText = newFormattedString
+            dateLbl.text = jsonDate
             
         } catch  {
             print(error)
@@ -169,10 +127,9 @@ extension NSMutableAttributedString {
         return self
     }
     
-    @discardableResult func italics(_ text: String) -> NSMutableAttributedString {
-        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.italicSystemFont(ofSize: 16)]
-        let italicString = NSMutableAttributedString(string: text, attributes: attrs)
-        append(italicString)
+    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
+        let normal = NSAttributedString(string: text)
+        append(normal)
         
         return self
     }
