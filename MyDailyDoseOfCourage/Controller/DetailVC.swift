@@ -108,7 +108,11 @@ class DetailVC: UIViewController {
             scriptureLbl.text = tomorrowScripture
             bodyLbl.text = tomorrowBody
             prayerLbl.attributedText = newFormattedString
-            dateLbl.text = jsonDate
+            
+            let noDashDateFormat = DateFormatter()
+            noDashDateFormat.dateFormat = "MMMM dd"
+            let changingDate = noDashDateFormat.string(from: entryDate!)
+            dateLbl.text = changingDate
             
         } catch  {
             print(error)
