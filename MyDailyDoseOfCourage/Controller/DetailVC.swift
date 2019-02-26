@@ -66,11 +66,11 @@ class DetailVC: UIViewController {
             bodyLbl.sizeToFit()
             bodyLbl.layoutIfNeeded()
             
-            formattedString
-                .bold("Let's pray - ")
-                .normal("\(displayPrayer)")
+//            formattedString
+//                .bold("Let's pray - ")
+//                .normal("\(displayPrayer)")
             
-            prayerLbl.attributedText = formattedString
+            prayerLbl.text = displayPrayer
             prayerLbl.sizeToFit()
             prayerLbl.layoutIfNeeded()
             
@@ -100,14 +100,14 @@ class DetailVC: UIViewController {
             guard let tomorrowBody = tomorrow["body"] else { return }
             guard let tomorrowPrayer = tomorrow["prayer"] else { return }
             
-            newFormattedString
-                .bold("Let's pray - ")
-                .normal(tomorrowPrayer)
+//            newFormattedString
+//                .bold("Let's pray - ")
+//                .normal(tomorrowPrayer)
 
             titleLbl.text = tomorrowTitle
             scriptureLbl.text = tomorrowScripture
             bodyLbl.text = tomorrowBody
-            prayerLbl.attributedText = newFormattedString
+            prayerLbl.text = tomorrowPrayer
             
             let noDashDateFormat = DateFormatter()
             noDashDateFormat.dateFormat = "MMMM dd"
@@ -117,8 +117,6 @@ class DetailVC: UIViewController {
         } catch  {
             print(error)
         }
-
-        
     }
 }
 
@@ -138,38 +136,4 @@ extension NSMutableAttributedString {
         return self
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
