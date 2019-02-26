@@ -29,7 +29,7 @@ class DetailVC: UIViewController {
     var date: String?
     
     override func viewWillAppear(_ animated: Bool) {
-        getData()
+        showData()
         dateFormatter.dateFormat = "MMMM-dd"
     }
     
@@ -44,6 +44,8 @@ class DetailVC: UIViewController {
         dateFormatter.dateFormat = "MMMM-dd"
         entryDate = Calendar.current.date(byAdding: .day, value: -1, to: entryDate!)
         print(dateFormatter.string(from: entryDate!))
+        
+        getJson()
         
 //        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
 //        let url = URL(fileURLWithPath: path)
@@ -86,41 +88,11 @@ class DetailVC: UIViewController {
         entryDate = Calendar.current.date(byAdding: .day, value: 1, to: entryDate!)
         print(dateFormatter.string(from: entryDate!))
         
-//        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
-//        let url = URL(fileURLWithPath: path)
-//
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-//
-//            dateFormatter.dateFormat = "MMMM-dd"
-//
-//            let tomorrowString = dateFormatter.string(from: tomorrow!)
-//            print(tomorrowString)
-//            //displayDate = tomorrowString
-//
-//            guard let array = json as? [String: Any] else { return }
-//            guard let tomorrow = array["\(tomorrowString)"] as? [String: String] else { return }
-//
-//            //MARK: Tomorrow items
-//            guard let tomorrowTitle = tomorrow["title"] else { return }
-//            guard let tomorrowScripture = tomorrow["scripture"] else { return }
-//            guard let tomorrowBody = tomorrow["body"] else { return }
-//            guard let tomorrowPrayer = tomorrow["prayer"] else { return }
-//
-//
-//            titleLbl.text = tomorrowTitle
-//            scriptureLbl.text = tomorrowScripture
-//            bodyLbl.text = tomorrowBody
-//            prayerLbl.text = tomorrowPrayer
-//            //ateLbl.text = displayDate
-//
-//        } catch  {
-//            print(error)
-//        }
+        getJson()
+        
     }
     
-    func getData() {
+    func showData() {
         dateFormatter.dateFormat = "MMMM dd"
         
         if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer, let displayDate = entryDate {
@@ -146,6 +118,45 @@ class DetailVC: UIViewController {
             
             dateLbl.text = dateFormatter.string(from: displayDate)
         }
+    }
+    
+    func getJson() {
+        
+        guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            
+            var jsonDate = dateFormatter.string(from: entryDate!)
+            //dateFormatter.dateFormat = "MMMM-dd"
+            
+//            let tomorrowString = dateFormatter.string(from: tomorrow!)
+//            print(tomorrowString)
+//            //displayDate = tomorrowString
+            
+            guard let array = json as? [String: Any] else { return }
+            guard let tomorrow = array["\(jsonDate)"] as? [String: String] else { return }
+            
+            //MARK: Tomorrow items
+            guard let tomorrowTitle = tomorrow["title"] else { return }
+            guard let tomorrowScripture = tomorrow["scripture"] else { return }
+            guard let tomorrowBody = tomorrow["body"] else { return }
+            guard let tomorrowPrayer = tomorrow["prayer"] else { return }
+            
+            
+            titleLbl.text = tomorrowTitle
+            scriptureLbl.text = tomorrowScripture
+            bodyLbl.text = tomorrowBody
+            prayerLbl.text = tomorrowPrayer
+            //ateLbl.text = displayDate
+            
+        } catch  {
+            print(error)
+        }
+
+        
     }
 }
 
