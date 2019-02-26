@@ -28,9 +28,7 @@ let facebookUrl = "https://www.facebook.com/ETheFathersHouse"
 let youtubeUrl = "https://www.youtube.com/channel/UCSGkrJKji21ak91LhKR8jRQ/videos"
 
 // MARK: TIME RELATED OBJECTS
-var today = ""
-var tomorr = ""
-var yester = ""
+var today = Date()
 var tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
 var yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
 var dateFormatter = DateFormatter()

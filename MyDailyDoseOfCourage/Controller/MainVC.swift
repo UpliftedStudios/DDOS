@@ -37,9 +37,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(calendar)
         print(day)
-        print(month)
+        print(months[month])
         getJsonData()
     }
     
@@ -75,7 +74,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     }
     
     @IBAction func calendarBtnTapped(_ sender: Any) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,7 +88,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = todayScriptureLbl.text
             destination.entryBody = todayBodyData
             destination.entryPrayer = todayPrayerData
-            destination.entryDate = dateFormatter.string(from: Date())
+            destination.entryDate = today
             
         } else if segue.identifier == "tomorrowBtnSegue" {
             
@@ -99,7 +97,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = tomorrowScriptureLbl.text
             destination.entryBody = tomorrowBodyData
             destination.entryPrayer = tomorrowPrayerData
-            destination.entryDate = dateFormatter.string(from: tomorrow!)
+            destination.entryDate = tomorrow
             
         } else if segue.identifier == "yesterdayBtnSegue" {
             
@@ -108,7 +106,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryScripture = yesterdayScriptureLbl.text
             destination.entryBody = yesterdayBodyData
             destination.entryPrayer = yesterdayPrayerData
-            destination.entryDate = dateFormatter.string(from: yesterday!)
+            destination.entryDate = yesterday
 
         } else if segue.identifier == "tfhSegue" {
             
@@ -154,15 +152,15 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             let data = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             
-            dateFormatter.dateFormat = "MMMM-dd"
-            let todayString = dateFormatter.string(from: Date())
-            let tomorrowString = dateFormatter.string(from: tomorrow!)
-            let yesterdayString = dateFormatter.string(from: yesterday!)
+//            dateFormatter.dateFormat = "MMMM-dd"
+//            let todayString = dateFormatter.string(from: Date())
+//            let tomorrowString = dateFormatter.string(from: tomorrow!)
+//            let yesterdayString = dateFormatter.string(from: yesterday!)
             
             guard let array = json as? [String: Any] else { return }
-            guard let today = array["\(todayString)"] as? [String: String] else { return }
-            guard let tomorrow = array["\(tomorrowString)"] as? [String: String] else { return }
-            guard let yesterday = array["\(yesterdayString)"] as? [String: String] else { return }
+            guard let today = array["\(months[month])-\(day)"] as? [String: String] else { return }
+            guard let tomorrow = array["\(months[month])-\(day + 1)"] as? [String: String] else { return }
+            guard let yesterday = array["\(months[month])-\(day - 1)"] as? [String: String] else { return }
             
             //MARK: JSON DATE ITEMS
             guard let todayTitle = today["title"] else { return }
@@ -197,9 +195,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             yesterdayScriptureLbl.text = yesterdayScripture
             yesterdayBodyData = yesterdayBody
             yesterdayPrayerData = yesterdayPrayer
-            
-            print(todayString, tomorrowString, yesterdayString)
-            
+                        
         } catch  {
             print(error)
         }
