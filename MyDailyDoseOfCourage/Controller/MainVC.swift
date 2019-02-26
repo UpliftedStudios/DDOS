@@ -133,10 +133,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         }
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
-    
     func sideMenuHandled() {
         leadingConstraint.constant = -220
         UIView.animate(withDuration: 0.3, animations: {
@@ -200,6 +196,11 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             print(error)
         }
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
 }
 
 
