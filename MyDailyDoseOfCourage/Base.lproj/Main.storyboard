@@ -27,6 +27,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rB-Iv-4l8" userLabel="TodayView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18q-kq-jq5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                                    </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mzR-zN-9PF">
                                                         <rect key="frame" x="37.5" y="46.5" width="300" height="125"/>
                                                         <subviews>
@@ -75,14 +78,21 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.71557741119999996" green="0.71557741119999996" blue="0.71557741119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="18q-kq-jq5" firstAttribute="width" secondItem="9rB-Iv-4l8" secondAttribute="width" id="7Cw-K1-Y4r"/>
                                                     <constraint firstAttribute="height" constant="218" id="DLl-zA-GAi"/>
                                                     <constraint firstItem="mzR-zN-9PF" firstAttribute="centerX" secondItem="9rB-Iv-4l8" secondAttribute="centerX" id="EyV-eh-AKQ"/>
+                                                    <constraint firstItem="18q-kq-jq5" firstAttribute="centerX" secondItem="mzR-zN-9PF" secondAttribute="centerX" id="TL4-2W-UuM"/>
                                                     <constraint firstItem="mzR-zN-9PF" firstAttribute="centerY" secondItem="9rB-Iv-4l8" secondAttribute="centerY" id="Zxn-t0-VGF"/>
+                                                    <constraint firstItem="18q-kq-jq5" firstAttribute="height" secondItem="9rB-Iv-4l8" secondAttribute="height" id="cDC-mJ-OaK"/>
+                                                    <constraint firstItem="18q-kq-jq5" firstAttribute="centerY" secondItem="mzR-zN-9PF" secondAttribute="centerY" id="uWv-tT-WEn"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8o-0C-Tnc" userLabel="TomorrowView">
                                                 <rect key="frame" x="0.0" y="218" width="375" height="218"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s0K-ba-Ej5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                                    </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0b7-cH-TNE">
                                                         <rect key="frame" x="37.5" y="20" width="300" height="125"/>
                                                         <subviews>
@@ -131,8 +141,12 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="s0K-ba-Ej5" firstAttribute="centerX" secondItem="0b7-cH-TNE" secondAttribute="centerX" id="0de-JP-xZP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="s0K-ba-Ej5" secondAttribute="bottom" id="1Bk-GI-HNw"/>
                                                     <constraint firstAttribute="height" constant="218" id="20F-RH-FQK"/>
+                                                    <constraint firstItem="s0K-ba-Ej5" firstAttribute="top" secondItem="n8o-0C-Tnc" secondAttribute="top" id="87m-Ec-Oc6"/>
                                                     <constraint firstItem="0b7-cH-TNE" firstAttribute="top" secondItem="n8o-0C-Tnc" secondAttribute="top" constant="20" id="Dzq-dn-AH2"/>
+                                                    <constraint firstItem="s0K-ba-Ej5" firstAttribute="leading" secondItem="n8o-0C-Tnc" secondAttribute="leading" id="QrZ-Q7-419"/>
                                                     <constraint firstItem="0b7-cH-TNE" firstAttribute="centerX" secondItem="n8o-0C-Tnc" secondAttribute="centerX" id="hSN-n9-bRO"/>
                                                     <constraint firstItem="0b7-cH-TNE" firstAttribute="centerY" secondItem="n8o-0C-Tnc" secondAttribute="centerY" constant="-26.5" id="olz-ku-QWN"/>
                                                 </constraints>
@@ -140,6 +154,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Awv-yc-O0L" userLabel="YesterdayView">
                                                 <rect key="frame" x="0.0" y="436" width="375" height="218"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZtT-SU-tdt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                                    </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vdS-FN-tSQ">
                                                         <rect key="frame" x="37.5" y="20" width="300" height="119"/>
                                                         <subviews>
@@ -189,8 +206,12 @@
                                                 <color key="backgroundColor" red="0.78460180356727593" green="0.78637001194775735" blue="0.81335263321522844" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="vdS-FN-tSQ" firstAttribute="centerX" secondItem="Awv-yc-O0L" secondAttribute="centerX" id="Amn-WG-Jw5"/>
+                                                    <constraint firstItem="ZtT-SU-tdt" firstAttribute="leading" secondItem="Awv-yc-O0L" secondAttribute="leading" id="QYv-Sf-CIa"/>
                                                     <constraint firstAttribute="height" constant="218" id="QcK-0B-6HU"/>
+                                                    <constraint firstItem="ZtT-SU-tdt" firstAttribute="centerX" secondItem="vdS-FN-tSQ" secondAttribute="centerX" id="Ucq-4H-7qm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZtT-SU-tdt" secondAttribute="bottom" id="cRM-4F-9Pw"/>
                                                     <constraint firstItem="vdS-FN-tSQ" firstAttribute="top" secondItem="Awv-yc-O0L" secondAttribute="top" constant="20" id="kBi-jO-LAV"/>
+                                                    <constraint firstItem="ZtT-SU-tdt" firstAttribute="top" secondItem="Awv-yc-O0L" secondAttribute="top" id="u1h-rN-fva"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -292,10 +313,13 @@
                     <connections>
                         <outlet property="leadingConstraint" destination="g43-6i-P0A" id="vD8-Ja-V2d"/>
                         <outlet property="sideMenu" destination="060-aQ-2fC" id="o50-ID-gla"/>
+                        <outlet property="todayImageView" destination="18q-kq-jq5" id="DWP-kY-pY6"/>
                         <outlet property="todayScriptureLbl" destination="TIJ-CS-bhL" id="Ja7-8B-dPP"/>
                         <outlet property="todayTitleLbl" destination="uQD-pw-s3j" id="wrm-l9-ixn"/>
+                        <outlet property="tomorrowImageView" destination="s0K-ba-Ej5" id="ABh-su-BSi"/>
                         <outlet property="tomorrowScriptureLbl" destination="8aO-vL-51Y" id="Q8o-xr-JwX"/>
                         <outlet property="tomorrowTitleLbl" destination="g9H-vC-kb3" id="X0s-VL-bWx"/>
+                        <outlet property="yesterdayImageView" destination="ZtT-SU-tdt" id="Ocz-Cj-9PM"/>
                         <outlet property="yesterdayScriptureLbl" destination="Trd-pS-ABV" id="dBb-Ju-PhU"/>
                         <outlet property="yesterdayTitleLbl" destination="SCS-Gf-kHA" id="p5k-Di-Nmo"/>
                         <segue destination="Vk6-Fr-4S4" kind="show" identifier="todayBtnSegue" id="QY4-XZ-w6v"/>
@@ -488,6 +512,7 @@
                         <outlet property="bodyLbl" destination="plE-Qh-csR" id="otb-Lg-9nf"/>
                         <outlet property="contentView" destination="Cx1-J4-VMe" id="rgo-kO-Yep"/>
                         <outlet property="dateLbl" destination="g4B-Tw-cpr" id="vVd-qt-3r2"/>
+                        <outlet property="imageView" destination="iuj-OP-KP9" id="7gt-W3-rOf"/>
                         <outlet property="prayerLbl" destination="boU-Ez-Udc" id="AfG-lx-MMI"/>
                         <outlet property="scriptureLbl" destination="Gnl-if-2tK" id="goX-2f-f9M"/>
                         <outlet property="scrollView" destination="NxX-XX-NYI" id="rU4-ok-41X"/>
