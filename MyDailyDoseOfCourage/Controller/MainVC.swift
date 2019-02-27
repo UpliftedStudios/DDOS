@@ -19,6 +19,10 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var yesterdayTitleLbl: UILabel!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
     
+    @IBOutlet weak var todayView: UIImageView!
+    @IBOutlet weak var tomorrowView: UIImageView!
+    @IBOutlet weak var yesterdayView: UIImageView!
+    
     @IBOutlet weak var sideMenu: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
@@ -39,8 +43,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         super.viewDidLoad()
         print(day)
         print(months[month])
-        getJsonData()
-    }
+        getJsonData()    }
     
 
     //MARK: BUTTON FUNCTIONS
@@ -148,11 +151,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             let data = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             
-//            dateFormatter.dateFormat = "MMMM-dd"
-//            let todayString = dateFormatter.string(from: Date())
-//            let tomorrowString = dateFormatter.string(from: tomorrow!)
-//            let yesterdayString = dateFormatter.string(from: yesterday!)
-            
             guard let array = json as? [String: Any] else { return }
             guard let today = array["\(months[month])-\(day)"] as? [String: String] else { return }
             guard let tomorrow = array["\(months[month])-\(day + 1)"] as? [String: String] else { return }
@@ -163,39 +161,77 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             guard let todayScripture = today["scripture"] else { return }
             guard let todayBody = today["body"] else { return }
             guard let todayPrayer = today["prayer"] else { return }
+            guard let todayImage = today["image"] else { return }
             
             //Tomorrow
             guard let tomorrowTitle = tomorrow["title"] else { return }
             guard let tomorrowScripture = tomorrow["scripture"] else { return }
             guard let tomorrowBody = tomorrow["body"] else { return }
             guard let tomorrowPrayer = tomorrow["prayer"] else { return }
+            guard let tomorrowImage = tomorrow["image"] else { return }
             
             //Yesterday
             guard let yesterdayTitle = yesterday["title"] else { return }
             guard let yesterdayScripture = yesterday["scripture"] else { return }
             guard let yesterdayBody = yesterday["body"] else { return }
             guard let yesterdayPrayer = yesterday["prayer"] else { return }
+            guard let yesterdayImage = yesterday["image"] else { return }
             
             //MARK: IMPLEMENT DATA
             todayTitleLbl.text = todayTitle
             todayScriptureLbl.text = todayScripture
             todayBodyData = todayBody
             todayPrayerData = todayPrayer
+            //let image = UIImage(named: todayImage)
+            //todayView.image = image
             
             tomorrowTitleLbl.text = tomorrowTitle
             tomorrowScriptureLbl.text = tomorrowScripture
             tomorrowBodyData = tomorrowBody
             tomorrowPrayerData = tomorrowPrayer
+            //tomorrowView.image = UIImage(named: tomorrowImage)
             
             yesterdayTitleLbl.text = yesterdayTitle
             yesterdayScriptureLbl.text = yesterdayScripture
             yesterdayBodyData = yesterdayBody
             yesterdayPrayerData = yesterdayPrayer
-                        
+            //yesterdayView.image = UIImage(named: yesterdayImage)
+            
         } catch  {
             print(error)
         }
     }
+    
+//    func showJson (todayTitle: String,
+//                   todayScripture: String,
+//                   todayBody: String,
+//                   todayPrayer: String,
+//                   tomorrowTitle: String,
+//                   tomorrowScripture: String,
+//                   tomorrowBody: String,
+//                   tomorrowPrayer: String,
+//                   yesterdayTitle: String,
+//                   yesterdayScripture: String,
+//                   yesterdayBody: String,
+//                   yesterdayPrayer: String) {
+//
+//        todayTitleLbl.text = todayTitle
+//        todayScriptureLbl.text = todayScripture
+//        todayBodyData = todayBody
+//        todayPrayerData = todayPrayer
+//
+//        tomorrowTitleLbl.text = tomorrowTitle
+//        tomorrowScriptureLbl.text = tomorrowScripture
+//        tomorrowBodyData = tomorrowBody
+//        tomorrowPrayerData = tomorrowPrayer
+//
+//        yesterdayTitleLbl.text = yesterdayTitle
+//        yesterdayScriptureLbl.text = yesterdayScripture
+//        yesterdayBodyData = yesterdayBody
+//        yesterdayPrayerData = yesterdayPrayer
+//
+//
+//    }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
