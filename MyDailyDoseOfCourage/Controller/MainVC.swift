@@ -19,9 +19,9 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var yesterdayTitleLbl: UILabel!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
     
-    @IBOutlet weak var todayView: UIImageView!
-    @IBOutlet weak var tomorrowView: UIImageView!
-    @IBOutlet weak var yesterdayView: UIImageView!
+    @IBOutlet weak var todayImageView: UIImageView!
+    @IBOutlet weak var tomorrowImageView: UIImageView!
+    @IBOutlet weak var yesterdayImageView: UIImageView!
     
     @IBOutlet weak var sideMenu: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
@@ -41,42 +41,32 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(day)
-        print(months[month])
-        getJsonData()    }
+        getJsonData()
+    }
     
 
     //MARK: BUTTON FUNCTIONS
     @IBAction func todayBtnPressed(_ sender: Any) {
-            performSegue(withIdentifier: "todayBtnSegue", sender: nil)
-    }
+            performSegue(withIdentifier: "todayBtnSegue", sender: nil) }
     @IBAction func tomorrowBtnPressed(_ sender: Any) {
-            performSegue(withIdentifier: "tomorrowBtnSegue", sender: nil)
-    }
+            performSegue(withIdentifier: "tomorrowBtnSegue", sender: nil) }
     @IBAction func yesterdayBtnPressed(_ sender: Any) {
-            performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil)
-    }
+            performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil) }
+    @IBAction func calendarBtnTapped(_ sender: Any) { }
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         
         if leadingConstraint.constant == CGFloat(0) {
-
             leadingConstraint.constant = -220
-
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
-
         } else if leadingConstraint.constant == CGFloat(-220) {
             leadingConstraint.constant = 0
-
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
         }
-    }
-    
-    @IBAction func calendarBtnTapped(_ sender: Any) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +82,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryBody = todayBodyData
             destination.entryPrayer = todayPrayerData
             destination.entryDate = today
+            destination.entryImage = todayImageView.image
             
         } else if segue.identifier == "tomorrowBtnSegue" {
             
@@ -101,6 +92,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryBody = tomorrowBodyData
             destination.entryPrayer = tomorrowPrayerData
             destination.entryDate = tomorrow
+            destination.entryImage = tomorrowImageView.image
             
         } else if segue.identifier == "yesterdayBtnSegue" {
             
@@ -110,24 +102,18 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryBody = yesterdayBodyData
             destination.entryPrayer = yesterdayPrayerData
             destination.entryDate = yesterday
+            destination.entryImage = yesterdayImageView.image
 
         } else if segue.identifier == "tfhSegue" {
-            
             let vc = segue.destination as! WebVC
             vc.webUrl = tfhUrl
-            
         } else if segue.identifier == "youtubeSegue" {
-            
             let vc = segue.destination as! WebVC
             vc.webUrl = youtubeUrl
-            
         } else if segue.identifier == "faecbookSegue" {
-            
             let vc = segue.destination as! WebVC
             vc.webUrl = facebookUrl
-            
         } else if segue.identifier == "popoverSegue" {
-            
             let popoverViewController = segue.destination as! CalendarVC
             popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
             popoverViewController.popoverPresentationController?.delegate = self
@@ -150,12 +136,12 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         do {
             let data = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
+
             guard let array = json as? [String: Any] else { return }
             guard let today = array["\(months[month])-\(day)"] as? [String: String] else { return }
             guard let tomorrow = array["\(months[month])-\(day + 1)"] as? [String: String] else { return }
             guard let yesterday = array["\(months[month])-\(day - 1)"] as? [String: String] else { return }
-            
+
             //MARK: JSON DATE ITEMS
             guard let todayTitle = today["title"] else { return }
             guard let todayScripture = today["scripture"] else { return }
@@ -182,20 +168,23 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             todayScriptureLbl.text = todayScripture
             todayBodyData = todayBody
             todayPrayerData = todayPrayer
-            //let image = UIImage(named: todayImage)
-            //todayView.image = image
+            todayImageView.image = UIImage(named: todayImage)
+            print(todayImage)
+            print(today)
             
             tomorrowTitleLbl.text = tomorrowTitle
             tomorrowScriptureLbl.text = tomorrowScripture
             tomorrowBodyData = tomorrowBody
             tomorrowPrayerData = tomorrowPrayer
-            //tomorrowView.image = UIImage(named: tomorrowImage)
+            tomorrowImageView.image = UIImage(named: tomorrowImage)
+            print(tomorrowImage)
             
             yesterdayTitleLbl.text = yesterdayTitle
             yesterdayScriptureLbl.text = yesterdayScripture
             yesterdayBodyData = yesterdayBody
             yesterdayPrayerData = yesterdayPrayer
-            //yesterdayView.image = UIImage(named: yesterdayImage)
+            yesterdayImageView.image = UIImage(named: yesterdayImage)
+            print(yesterdayImage)
             
         } catch  {
             print(error)

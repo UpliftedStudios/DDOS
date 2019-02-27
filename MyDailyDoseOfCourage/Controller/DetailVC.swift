@@ -15,6 +15,7 @@ class DetailVC: UIViewController {
     @IBOutlet weak var bodyLbl: UILabel!
     @IBOutlet weak var prayerLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -26,6 +27,7 @@ class DetailVC: UIViewController {
     var entryScripture: String?
     var entryBody: String?
     var entryPrayer: String?
+    var entryImage: UIImage?
     var entryDate: Date?
     var date: String?
     
@@ -52,11 +54,13 @@ class DetailVC: UIViewController {
     func showData() {
         dateFormatter.dateFormat = "MMMM dd"
         
-        if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer, let displayDate = entryDate {
+        if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer, let displayDate = entryDate, let displayImage = entryImage {
             
             titleLbl.text = displayTitle
             titleLbl.sizeToFit()
             titleLbl.layoutIfNeeded()
+            
+            imageView.image = displayImage
             
             scriptureLbl.text = displayScripture
             scriptureLbl.sizeToFit()
@@ -65,10 +69,6 @@ class DetailVC: UIViewController {
             bodyLbl.text = displayBody
             bodyLbl.sizeToFit()
             bodyLbl.layoutIfNeeded()
-            
-//            formattedString
-//                .bold("Let's pray - ")
-//                .normal("\(displayPrayer)")
             
             prayerLbl.text = displayPrayer
             prayerLbl.sizeToFit()
@@ -99,18 +99,17 @@ class DetailVC: UIViewController {
             guard let tomorrowScripture = tomorrow["scripture"] else { return }
             guard let tomorrowBody = tomorrow["body"] else { return }
             guard let tomorrowPrayer = tomorrow["prayer"] else { return }
-            
-//            newFormattedString
-//                .bold("Let's pray - ")
-//                .normal(tomorrowPrayer)
+            guard let tomorrowImage = tomorrow["image"] else { return }
+
 
             titleLbl.text = tomorrowTitle
             scriptureLbl.text = tomorrowScripture
             bodyLbl.text = tomorrowBody
             prayerLbl.text = tomorrowPrayer
+            imageView.image = UIImage(named: tomorrowImage)
             
             let noDashDateFormat = DateFormatter()
-            noDashDateFormat.dateFormat = "MMMM dd"
+            noDashDateFormat.dateFormat = "MMMM d"
             let changingDate = noDashDateFormat.string(from: entryDate!)
             dateLbl.text = changingDate
             
