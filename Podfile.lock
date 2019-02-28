@@ -1,16 +1,20 @@
 PODS:
   - JTAppleCalendar (7.1.5)
+  - SideMenu (4.0.0)
 
 DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
+  - SideMenu (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JTAppleCalendar
+    - SideMenu
 
 SPEC CHECKSUMS:
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
+  SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
 
-PODFILE CHECKSUM: cded98c75698442794116dbf2c6a4f9e5570a680
+PODFILE CHECKSUM: 79490b8172bc04d66a8dba2f965ce362e6b6ae22
 
 COCOAPODS: 1.5.3
