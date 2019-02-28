@@ -57,11 +57,11 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBAction func sideMenuTapped(_ sender: Any) {
         
         if leadingConstraint.constant == CGFloat(0) {
-            leadingConstraint.constant = -220
+            leadingConstraint.constant = -300
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
-        } else if leadingConstraint.constant == CGFloat(-220) {
+        } else if leadingConstraint.constant == CGFloat(-300) {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
@@ -123,7 +123,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     }
     
     func sideMenuHandled() {
-        leadingConstraint.constant = -220
+        leadingConstraint.constant = -200
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
@@ -169,22 +169,18 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             todayBodyData = todayBody
             todayPrayerData = todayPrayer
             todayImageView.image = UIImage(named: todayImage)
-            print(todayImage)
-            print(today)
             
             tomorrowTitleLbl.text = tomorrowTitle
             tomorrowScriptureLbl.text = tomorrowScripture
             tomorrowBodyData = tomorrowBody
             tomorrowPrayerData = tomorrowPrayer
             tomorrowImageView.image = UIImage(named: tomorrowImage)
-            print(tomorrowImage)
             
             yesterdayTitleLbl.text = yesterdayTitle
             yesterdayScriptureLbl.text = yesterdayScripture
             yesterdayBodyData = yesterdayBody
             yesterdayPrayerData = yesterdayPrayer
             yesterdayImageView.image = UIImage(named: yesterdayImage)
-            print(yesterdayImage)
             
         } catch  {
             print(error)

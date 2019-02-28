@@ -11,5 +11,14 @@ import JTAppleCalendar
 
 class CalendarCell: JTAppleCell {
     @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var selectedView: UIView!    
+    @IBOutlet weak var selectedView: UIView!
+    
+    let calendarVC = CalendarVC()
+    
+    @IBAction func calendarBtn(_ sender: Any) {
+        
+        
+        
+    }
+    
 }
