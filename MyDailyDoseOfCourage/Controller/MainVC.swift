@@ -57,11 +57,11 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBAction func sideMenuTapped(_ sender: Any) {
         
         if leadingConstraint.constant == CGFloat(0) {
-            leadingConstraint.constant = -300
+            leadingConstraint.constant = -280
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
-        } else if leadingConstraint.constant == CGFloat(-300) {
+        } else if leadingConstraint.constant == CGFloat(-280) {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
