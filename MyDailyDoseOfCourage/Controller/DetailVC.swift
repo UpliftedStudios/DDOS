@@ -52,7 +52,7 @@ class DetailVC: UIViewController {
     }
     
     func showData() {
-        dateFormatter.dateFormat = "MMMM dd"
+        dateFormatter.dateFormat = "MMMM d"
         
         if  let displayTitle = entryTitle,
             let displayScripture = entryScripture,
