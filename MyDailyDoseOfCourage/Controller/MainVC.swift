@@ -56,24 +56,22 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         
-        if leadingConstraint.constant == CGFloat(0) {
-            leadingConstraint.constant = -280
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-        } else if leadingConstraint.constant == CGFloat(-280) {
-            leadingConstraint.constant = 0
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-        }
+//        if leadingConstraint.constant == CGFloat(0) {
+//            leadingConstraint.constant = -280
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.view.layoutIfNeeded()
+//            })
+//        } else if leadingConstraint.constant == CGFloat(-280) {
+//            leadingConstraint.constant = 0
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.view.layoutIfNeeded()
+//            })
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        dateFormatter.dateFormat = "MMMM dd"
-        print(dateFormatter.string(from: Date()))
-        
+        //dateFormatter.dateFormat = "MMMM dd"
         if segue.identifier == "todayBtnSegue" {
             
             let destination = segue.destination as! DetailVC
@@ -113,34 +111,47 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         } else if segue.identifier == "faecbookSegue" {
             let vc = segue.destination as! WebVC
             vc.webUrl = facebookUrl
-        } else if segue.identifier == "popoverSegue" {
-            let popoverViewController = segue.destination as! CalendarVC
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-            popoverViewController.popoverPresentationController?.delegate = self
-        } else {
+//        } else if segue.identifier == "popoverSegue" {
+//            let popoverViewController = segue.destination as! CalendarVC
+//            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+//            popoverViewController.popoverPresentationController?.delegate = self
+//        } else {
             return
         }
     }
     
-    func sideMenuHandled() {
-        leadingConstraint.constant = -200
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
+//    func sideMenuHandled() {
+//        leadingConstraint.constant = -200
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.view.layoutIfNeeded()
+//        })
+//    }
     //MARK: JSON FUNCTIONS
     func getJsonData() {
         guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
         
+        //print("test 1")
+        
         do {
+            //print("test 2")
+            dateFormatter.dateFormat = "MMMM-dd"
+
             let data = try Data(contentsOf: url)
+            //print("test 3")
+
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            //print("test 4")
 
             guard let array = json as? [String: Any] else { return }
-            guard let today = array["\(months[month])-\(day)"] as? [String: String] else { return }
-            guard let tomorrow = array["\(months[month])-\(day + 1)"] as? [String: String] else { return }
-            guard let yesterday = array["\(months[month])-\(day - 1)"] as? [String: String] else { return }
+            //print("test 5")
+
+            guard let today = array["\(dateFormatter.string(from: today))"] as? [String: String] else { return }
+
+            guard let tomorrow = array["\(dateFormatter.string(from: tomorrow!))"] as? [String: String] else { return }
+            //print("test 6")
+
+            guard let yesterday = array["\(dateFormatter.string(from: yesterday!))"] as? [String: String] else { return }
 
             //MARK: JSON DATE ITEMS
             guard let todayTitle = today["title"] else { return }
@@ -169,13 +180,13 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             todayBodyData = todayBody
             todayPrayerData = todayPrayer
             todayImageView.image = UIImage(named: todayImage)
-            
+
             tomorrowTitleLbl.text = tomorrowTitle
             tomorrowScriptureLbl.text = tomorrowScripture
             tomorrowBodyData = tomorrowBody
             tomorrowPrayerData = tomorrowPrayer
             tomorrowImageView.image = UIImage(named: tomorrowImage)
-            
+
             yesterdayTitleLbl.text = yesterdayTitle
             yesterdayScriptureLbl.text = yesterdayScripture
             yesterdayBodyData = yesterdayBody
@@ -186,7 +197,27 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             print(error)
         }
     }
+
+//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+//        return UIModalPresentationStyle.none
+//    }
+}
     
+//    Items and func to separate json get and show
+//
+//    var todayTitle = ""
+//    var todayScripture = ""
+//    var todayBody = ""
+//    var todayPrayer = ""
+//    var tomorrowTitle = ""
+//    var tomorrowScripture = ""
+//    var tomorrowBody = ""
+//    var tomorrowPrayer = ""
+//    var yesterdayTitle = ""
+//    var yesterdayScripture = ""
+//    var yesterdayBody = ""
+//    var yesterdayPrayer = ""
+//
 //    func showJson (todayTitle: String,
 //                   todayScripture: String,
 //                   todayBody: String,
@@ -214,15 +245,9 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
 //        yesterdayScriptureLbl.text = yesterdayScripture
 //        yesterdayBodyData = yesterdayBody
 //        yesterdayPrayerData = yesterdayPrayer
-//
-//
 //    }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
-    
-}
+
 
 
 

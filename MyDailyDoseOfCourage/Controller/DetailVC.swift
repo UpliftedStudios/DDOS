@@ -54,7 +54,12 @@ class DetailVC: UIViewController {
     func showData() {
         dateFormatter.dateFormat = "MMMM dd"
         
-        if let displayTitle = entryTitle, let displayScripture = entryScripture, let displayBody = entryBody, let displayPrayer = entryPrayer, let displayDate = entryDate, let displayImage = entryImage {
+        if  let displayTitle = entryTitle,
+            let displayScripture = entryScripture,
+            let displayBody = entryBody,
+            let displayPrayer = entryPrayer,
+            let displayDate = entryDate,
+            let displayImage = entryImage {
             
             titleLbl.text = displayTitle
             titleLbl.sizeToFit()
