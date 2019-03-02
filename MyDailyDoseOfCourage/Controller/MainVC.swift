@@ -11,17 +11,19 @@ import UIKit
 class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var todayTitleLbl: UILabel!
-    @IBOutlet weak var todayScriptureLbl: UILabel!
+    @IBOutlet weak var todayImageView: UIImageView!
+
+//    @IBOutlet weak var todayScriptureLbl: UILabel!
     
     @IBOutlet weak var tomorrowTitleLbl: UILabel!
-    @IBOutlet weak var tomorrowScriptureLbl: UILabel!
+    @IBOutlet weak var tomorrowImageView: UIImageView!
+
+//    @IBOutlet weak var tomorrowScriptureLbl: UILabel!
     
     @IBOutlet weak var yesterdayTitleLbl: UILabel!
+    @IBOutlet weak var yesterdayImageView: UIImageView!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
     
-    @IBOutlet weak var todayImageView: UIImageView!
-    @IBOutlet weak var tomorrowImageView: UIImageView!
-    @IBOutlet weak var yesterdayImageView: UIImageView!
     
     
     
@@ -30,10 +32,15 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     var todayEntry: EntryData?
     var todayBodyData = ""
-    var tomorrowBodyData = ""
-    var yesterdayBodyData = ""
+    var todayScriptureData = ""
     var todayPrayerData = ""
+
+    var tomorrowBodyData = ""
+    var tomorrowScriptureData = ""
     var tomorrowPrayerData = ""
+
+    var yesterdayBodyData = ""
+    var yesteradayPrayerData = ""
     var yesterdayPrayerData = ""
     
     var menuShowing = true
@@ -56,8 +63,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil) }
     @IBAction func calendarBtnTapped(_ sender: Any) { }
     
-    @IBAction func sideMenuTapped(_ sender: Any) {
-        
+//    @IBAction func sideMenuTapped(_ sender: Any) {
+//
 //        if leadingConstraint.constant == CGFloat(0) {
 //            leadingConstraint.constant = -280
 //            UIView.animate(withDuration: 0.3, animations: {
@@ -69,7 +76,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
 //                self.view.layoutIfNeeded()
 //            })
 //        }
-    }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -78,7 +85,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             
             let destination = segue.destination as! DetailVC
             destination.entryTitle = todayTitleLbl.text
-            destination.entryScripture = todayScriptureLbl.text
+            destination.entryScripture = todayScriptureData
             destination.entryBody = todayBodyData
             destination.entryPrayer = todayPrayerData
             destination.entryDate = today
@@ -88,7 +95,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             
             let destination = segue.destination as! DetailVC
             destination.entryTitle = tomorrowTitleLbl.text
-            destination.entryScripture = tomorrowScriptureLbl.text
+            destination.entryScripture = tomorrowScriptureData
             destination.entryBody = tomorrowBodyData
             destination.entryPrayer = tomorrowPrayerData
             destination.entryDate = tomorrow
@@ -178,13 +185,13 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             
             //MARK: IMPLEMENT DATA
             todayTitleLbl.text = todayTitle
-            todayScriptureLbl.text = todayScripture
+            todayScriptureData = todayScripture
             todayBodyData = todayBody
             todayPrayerData = todayPrayer
             todayImageView.image = UIImage(named: todayImage)
 
             tomorrowTitleLbl.text = tomorrowTitle
-            tomorrowScriptureLbl.text = tomorrowScripture
+            tomorrowScriptureData = tomorrowScripture
             tomorrowBodyData = tomorrowBody
             tomorrowPrayerData = tomorrowPrayer
             tomorrowImageView.image = UIImage(named: tomorrowImage)
