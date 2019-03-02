@@ -23,8 +23,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var tomorrowImageView: UIImageView!
     @IBOutlet weak var yesterdayImageView: UIImageView!
     
-    @IBOutlet weak var sideMenu: UIView!
-    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var sideMenu: UIView!
+//    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
     var todayEntry: EntryData?
     var todayBodyData = ""
