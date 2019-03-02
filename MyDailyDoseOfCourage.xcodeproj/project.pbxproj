@@ -18,6 +18,7 @@
 		A9C65F3520D0B606003D1E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C65F3420D0B606003D1E0D /* Assets.xcassets */; };
 		A9C65F3820D0B606003D1E0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C65F3620D0B606003D1E0D /* LaunchScreen.storyboard */; };
 		A9C65F4020D0C09C003D1E0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C65F3F20D0C09C003D1E0D /* Constants.swift */; };
+		ED7046BF2228DC69006DF07F /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7046BE2228DC69006DF07F /* SideMenuVC.swift */; };
 		EDCC74BF212498F500FBE0E5 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC74BE212498F500FBE0E5 /* CalendarCell.swift */; };
 		EDCC74C121249A0400FBE0E5 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC74C021249A0400FBE0E5 /* CalendarVC.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		A9C65F3F20D0C09C003D1E0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7ABC3564E9F5F3B4C5BD1A0 /* Pods-MyDailyDoseOfCourage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDailyDoseOfCourage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDailyDoseOfCourage/Pods-MyDailyDoseOfCourage.debug.xcconfig"; sourceTree = "<group>"; };
 		E97FDE8F3BAAE31C53F80171 /* Pods_MyDailyDoseOfCourage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDailyDoseOfCourage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7046BE2228DC69006DF07F /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		EDCC74BE212498F500FBE0E5 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		EDCC74C021249A0400FBE0E5 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				A93A10CF20D202E2002B58B0 /* DetailVC.swift */,
 				EDCC74C021249A0400FBE0E5 /* CalendarVC.swift */,
 				A984E18A20D0C1A700199231 /* WebVC.swift */,
+				ED7046BE2228DC69006DF07F /* SideMenuVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -212,10 +215,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyDailyDoseOfCourage/Pods-MyDailyDoseOfCourage-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -252,6 +257,7 @@
 				A9C65F2B20D0B603003D1E0D /* AppDelegate.swift in Sources */,
 				A984E18B20D0C1A700199231 /* WebVC.swift in Sources */,
 				A9C65F3320D0B603003D1E0D /* MyDailyDoseOfCourage.xcdatamodeld in Sources */,
+				ED7046BF2228DC69006DF07F /* SideMenuVC.swift in Sources */,
 				A9C65F4020D0C09C003D1E0D /* Constants.swift in Sources */,
 				EDCC74C121249A0400FBE0E5 /* CalendarVC.swift in Sources */,
 				A93A10D020D202E2002B58B0 /* DetailVC.swift in Sources */,
@@ -402,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6VG4E68KL;
 				INFOPLIST_FILE = MyDailyDoseOfCourage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,6 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6VG4E68KL;
 				INFOPLIST_FILE = MyDailyDoseOfCourage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
