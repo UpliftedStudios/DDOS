@@ -29,3 +29,14 @@ class WebVC: UIViewController,WKNavigationDelegate {
         print(request)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
