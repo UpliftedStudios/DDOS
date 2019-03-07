@@ -24,12 +24,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var yesterdayImageView: UIImageView!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
     
-    
-    
-    
-//    @IBOutlet weak var sideMenu: UIView!
-//    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-    
     var todayEntry: EntryData?
     var todayBodyData = ""
     var todayScriptureData = ""
@@ -43,17 +37,13 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     var yesteradayPrayerData = ""
     var yesterdayPrayerData = ""
     
-    var menuShowing = true
-    
     let formattedString = NSMutableAttributedString()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getJsonData()
     }
     
-
     //MARK: BUTTON FUNCTIONS
     @IBAction func todayBtnPressed(_ sender: Any) {
             performSegue(withIdentifier: "todayBtnSegue", sender: nil) }
@@ -63,24 +53,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil) }
     @IBAction func calendarBtnTapped(_ sender: Any) { }
     
-//    @IBAction func sideMenuTapped(_ sender: Any) {
-//
-//        if leadingConstraint.constant == CGFloat(0) {
-//            leadingConstraint.constant = -280
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.view.layoutIfNeeded()
-//            })
-//        } else if leadingConstraint.constant == CGFloat(-280) {
-//            leadingConstraint.constant = 0
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.view.layoutIfNeeded()
-//            })
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //dateFormatter.dateFormat = "MMMM dd"
         if segue.identifier == "todayBtnSegue" {
             
             let destination = segue.destination as! DetailVC
@@ -120,21 +94,10 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         } else if segue.identifier == "faecbookSegue" {
             let vc = segue.destination as! WebVC
             vc.webUrl = facebookUrl
-//        } else if segue.identifier == "popoverSegue" {
-//            let popoverViewController = segue.destination as! CalendarVC
-//            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-//            popoverViewController.popoverPresentationController?.delegate = self
-//        } else {
             return
         }
     }
     
-//    func sideMenuHandled() {
-//        leadingConstraint.constant = -200
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.view.layoutIfNeeded()
-//        })
-//    }
     //MARK: JSON FUNCTIONS
     func getJsonData() {
         guard let path = Bundle.main.path(forResource: "test", ofType: "json") else { return }
