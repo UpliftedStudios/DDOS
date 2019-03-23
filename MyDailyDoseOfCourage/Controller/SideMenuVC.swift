@@ -1,23 +1,22 @@
-////
-////  SideMenuVC.swift
-////  MyDailyDoseOfCourage
-////
-////  Created by Marcus Hidalgo on 2/28/19.
-////  Copyright © 2019 UpliftedStudios. All rights reserved.
-////
 //
-//import UIKit
-//import JTAppleCalendar
+//  SideMenuVC.swift
+//  MyDailyDoseOfCourage
 //
-//class SideMenuVC: UIViewController {
+//  Created by Marcus Hidalgo on 2/28/19.
+//  Copyright © 2019 UpliftedStudios. All rights reserved.
 //
-//    let formatter = DateFormatter()
-//
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        setupCalendarView()
-//    }
+
+import UIKit
+import JTAppleCalendar
+import SideMenu
+
+class SideMenuVC: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+            }
+}
 //
 //    func setupCalendarView() {
 //        collectionView.minimumLineSpacing = 0

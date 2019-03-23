@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
@@ -23,6 +24,9 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var yesterdayTitleLbl: UILabel!
     @IBOutlet weak var yesterdayImageView: UIImageView!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
+    
+    @IBOutlet weak var blurView: UIView!
+    
     
     var todayEntry: EntryData?
     var todayBodyData = ""
@@ -42,6 +46,19 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getJsonData()
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenu") as! UISideMenuNavigationController
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.default.menuFadeStatusBar = false
+        
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuShadowRadius = 10
+        SideMenuManager.default.menuParallaxStrength = 10
+//        SideMenuManager.default.menuAnimationFadeStrength = 0.5
+//        SideMenuManager.default.menuShadowOpacity = 0.6
+
+        
     }
     
     //MARK: BUTTON FUNCTIONS
@@ -51,7 +68,28 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             performSegue(withIdentifier: "tomorrowBtnSegue", sender: nil) }
     @IBAction func yesterdayBtnPressed(_ sender: Any) {
             performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil) }
-    @IBAction func calendarBtnTapped(_ sender: Any) { }
+    
+    @IBAction func menuBtnPressed(_ sender: Any) {
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+        
+        //To add blur effect
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            blurView.backgroundColor = .clear
+
+            let blurEffect = UIBlurEffect(style: .light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.blurView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            blurView.addSubview(blurEffectView)
+            
+        } else {
+            blurView.backgroundColor = .clear
+        }
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
