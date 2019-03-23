@@ -54,11 +54,10 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         SideMenuManager.default.menuShadowRadius = 10
-        SideMenuManager.default.menuParallaxStrength = 10
-//        SideMenuManager.default.menuAnimationFadeStrength = 0.5
-//        SideMenuManager.default.menuShadowOpacity = 0.6
-
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        removeSubview()
     }
     
     //MARK: BUTTON FUNCTIONS
@@ -78,6 +77,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
 
             let blurEffect = UIBlurEffect(style: .light)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //blurEffectView.tag = 100
             //always fill the view
             blurEffectView.frame = self.blurView.bounds
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -89,6 +89,16 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         }
         
     }
+    
+//    func removeSubview() {
+//
+//        if let viewWithTag = self.view.viewWithTag(100) {
+//            viewWithTag.removeFromSuperview()
+//        }else{
+//            print("No!")
+//        }
+//
+//    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
