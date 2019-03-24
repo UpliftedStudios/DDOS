@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
+class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideMenuNavigationControllerDelegate {
     
     @IBOutlet weak var todayTitleLbl: UILabel!
     @IBOutlet weak var todayImageView: UIImageView!
@@ -27,6 +27,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var blurView: UIView!
     
+    var blurViewOn = false
     
     var todayEntry: EntryData?
     var todayBodyData = ""
@@ -54,10 +55,14 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
         
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         SideMenuManager.default.menuShadowRadius = 10
+<<<<<<< HEAD
     }
     
     override func viewDidAppear(_ animated: Bool) {
 //        removeSubview()
+=======
+        SideMenuManager.default.menuParallaxStrength = 10
+>>>>>>> bugs
     }
     
     //MARK: BUTTON FUNCTIONS
@@ -71,6 +76,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBAction func menuBtnPressed(_ sender: Any) {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
         
+<<<<<<< HEAD
         //To add blur effect
         if !UIAccessibility.isReduceTransparencyEnabled {
             blurView.backgroundColor = .clear
@@ -84,10 +90,36 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
 
             blurView.addSubview(blurEffectView)
             
-        } else {
-            blurView.backgroundColor = .clear
-        }
+=======
+        blurViewOn = true
         
+        blurEffect()
+        
+        print(blurViewOn)
+    }
+    
+    func blurEffect() {
+        if blurViewOn == true {
+            if !UIAccessibility.isReduceTransparencyEnabled {
+                blurView.backgroundColor = .clear
+                
+                let blurEffect = UIBlurEffect(style: .light)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                //always fill the view
+                blurEffectView.frame = self.blurView.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                
+                blurView.addSubview(blurEffectView)
+                
+            }
+>>>>>>> bugs
+        } else {
+            blurView.removeFromSuperview()
+        }
+    }
+    
+    func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+        blurView.removeFromSuperview()
     }
     
 //    func removeSubview() {
