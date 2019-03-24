@@ -55,14 +55,14 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
         
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         SideMenuManager.default.menuShadowRadius = 10
-<<<<<<< HEAD
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
 //        removeSubview()
-=======
+
         SideMenuManager.default.menuParallaxStrength = 10
->>>>>>> bugs
+
     }
     
     //MARK: BUTTON FUNCTIONS
@@ -76,12 +76,11 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
     @IBAction func menuBtnPressed(_ sender: Any) {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
         
-<<<<<<< HEAD
         //To add blur effect
         if !UIAccessibility.isReduceTransparencyEnabled {
             blurView.backgroundColor = .clear
 
-            let blurEffect = UIBlurEffect(style: .light)
+            let blurEffect = UIBlurEffect(style: .extraLight)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             //blurEffectView.tag = 100
             //always fill the view
@@ -89,13 +88,9 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
             blurView.addSubview(blurEffectView)
-            
-=======
-        blurViewOn = true
-        
-        blurEffect()
-        
-        print(blurViewOn)
+            blurViewOn = true
+            print(blurViewOn)
+    }
     }
     
     func blurEffect() {
@@ -112,11 +107,11 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
                 blurView.addSubview(blurEffectView)
                 
             }
->>>>>>> bugs
-        } else {
+                else {
             blurView.removeFromSuperview()
         }
     }
+        }
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
         blurView.removeFromSuperview()
@@ -299,6 +294,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
 //        yesterdayPrayerData = yesterdayPrayer
 //    }
     
+
 
 
 
