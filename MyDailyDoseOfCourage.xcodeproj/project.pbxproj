@@ -22,6 +22,8 @@
 		EDCC74BF212498F500FBE0E5 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC74BE212498F500FBE0E5 /* CalendarCell.swift */; };
 		EDCC74C121249A0400FBE0E5 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC74C021249A0400FBE0E5 /* CalendarVC.swift */; };
 		EDCF7DEE2247464000FDCE4D /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF7DED2247464000FDCE4D /* AboutVC.swift */; };
+		EDCF7DF22248413600FDCE4D /* BookmarkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF7DF12248413600FDCE4D /* BookmarkVC.swift */; };
+		EDCF7DF4224851CC00FDCE4D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF7DF3224851CC00FDCE4D /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		EDCC74BE212498F500FBE0E5 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		EDCC74C021249A0400FBE0E5 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		EDCF7DED2247464000FDCE4D /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		EDCF7DF12248413600FDCE4D /* BookmarkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkVC.swift; sourceTree = "<group>"; };
+		EDCF7DF3224851CC00FDCE4D /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				A984E18A20D0C1A700199231 /* WebVC.swift */,
 				ED7046BE2228DC69006DF07F /* SideMenuVC.swift */,
 				EDCF7DED2247464000FDCE4D /* AboutVC.swift */,
+				EDCF7DF12248413600FDCE4D /* BookmarkVC.swift */,
+				EDCF7DF3224851CC00FDCE4D /* SettingsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -260,11 +266,13 @@
 				A9C65F2B20D0B603003D1E0D /* AppDelegate.swift in Sources */,
 				A984E18B20D0C1A700199231 /* WebVC.swift in Sources */,
 				A9C65F3320D0B603003D1E0D /* MyDailyDoseOfCourage.xcdatamodeld in Sources */,
+				EDCF7DF4224851CC00FDCE4D /* SettingsVC.swift in Sources */,
 				ED7046BF2228DC69006DF07F /* SideMenuVC.swift in Sources */,
 				EDCF7DEE2247464000FDCE4D /* AboutVC.swift in Sources */,
 				A9C65F4020D0C09C003D1E0D /* Constants.swift in Sources */,
 				EDCC74C121249A0400FBE0E5 /* CalendarVC.swift in Sources */,
 				A93A10D020D202E2002B58B0 /* DetailVC.swift in Sources */,
+				EDCF7DF22248413600FDCE4D /* BookmarkVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

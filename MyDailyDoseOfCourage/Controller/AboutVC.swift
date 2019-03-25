@@ -7,15 +7,31 @@
 //
 
 import UIKit
+import SideMenu
 
 class AboutVC: UIViewController {
 
     @IBOutlet weak var photoImageView: UIImageView!
     
+    let image = UIImage(named: "PE")
+    let sideMenuVC = SideMenuVC()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = UIImage(named: "PE")
         photoImageView.maskCircle(anyImage: image!)
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "baseline_menu_white_18pt_2x"), for: .normal)
+        button.addTarget(self, action: #selector(menuBtnPressed), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+        
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+        navigationItem.title = "About"
+    }
+    
+    @objc func menuBtnPressed() {
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,15 +48,6 @@ class AboutVC: UIViewController {
         } else {
             return
         }
-    }
-    
-    @IBAction func tfhWebBtnPressed(_ sender: Any) {
-    }
-    @IBAction func blogspotBtnPressed(_ sender: Any) {
-    }
-    @IBAction func facebookBtbPressed(_ sender: Any) {
-    }
-    @IBAction func youtubeBtnPressed(_ sender: Any) {
     }
 }
 

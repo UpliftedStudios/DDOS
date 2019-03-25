@@ -9,7 +9,9 @@
 import UIKit
 import SideMenu
 
-class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideMenuNavigationControllerDelegate {
+class MainVC: UIViewController,
+              UIPopoverPresentationControllerDelegate,
+              UISideMenuNavigationControllerDelegate {
     
     @IBOutlet weak var todayTitleLbl: UILabel!
     @IBOutlet weak var todayImageView: UIImageView!
@@ -60,23 +62,23 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
     
     @IBAction func menuBtnPressed(_ sender: Any) {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
-        blurEffect()
+//        blurEffect()
     }
     
-    func blurEffect() {
-        blurView.isHidden = false
-            if !UIAccessibility.isReduceTransparencyEnabled {
-                
-                let blurEffect = UIBlurEffect(style: .light)
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                blurEffectView.frame = self.blurView.bounds
-                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                
-                blurView.addSubview(blurEffectView)
-            } else {
-                return
-        }
-    }
+//    func blurEffect() {
+//        blurView.isHidden = false
+//            if !UIAccessibility.isReduceTransparencyEnabled {
+//
+//                let blurEffect = UIBlurEffect(style: .light)
+//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                blurEffectView.frame = self.blurView.bounds
+//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//                blurView.addSubview(blurEffectView)
+//            } else {
+//                return
+//        }
+//    }
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
         blurView.isHidden = true
@@ -88,7 +90,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         SideMenuManager.default.menuFadeStatusBar = false
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        SideMenuManager.default.menuShadowRadius = 10
+        SideMenuManager.default.menuShadowRadius = 50
         SideMenuManager.default.menuParallaxStrength = 10
     }
     
