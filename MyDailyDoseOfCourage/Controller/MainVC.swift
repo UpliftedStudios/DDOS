@@ -49,7 +49,6 @@ class MainVC: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         getJsonData()
-<<<<<<< HEAD
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenu") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
@@ -65,9 +64,18 @@ class MainVC: UIViewController,
 //        removeSubview()
 
         SideMenuManager.default.menuParallaxStrength = 10
+<<<<<<< HEAD
+
+=======
+>>>>>>> bugs
+||||||| merged common ancestors
 
 =======
         sideMenuIntitalizer()
+>>>>>>> bugs
+=======
+        sideMenuIntitalizer()
+
 >>>>>>> bugs
     }
     
@@ -81,8 +89,47 @@ class MainVC: UIViewController,
     
     @IBAction func menuBtnPressed(_ sender: Any) {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
-<<<<<<< HEAD
         
+<<<<<<< HEAD
+        //To add blur effect
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            blurView.backgroundColor = .clear
+
+            let blurEffect = UIBlurEffect(style: .extraLight)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //blurEffectView.tag = 100
+            //always fill the view
+            blurEffectView.frame = self.blurView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            blurView.addSubview(blurEffectView)
+            blurViewOn = true
+            print(blurViewOn)
+    }
+    }
+    
+    func blurEffect() {
+        if blurViewOn == true {
+            if !UIAccessibility.isReduceTransparencyEnabled {
+                blurView.backgroundColor = .clear
+                
+                let blurEffect = UIBlurEffect(style: .light)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                //always fill the view
+                blurEffectView.frame = self.blurView.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                
+                blurView.addSubview(blurEffectView)
+                
+            }
+                else {
+            blurView.removeFromSuperview()
+        }
+    }
+        }
+=======
+>>>>>>> bugs
+||||||| merged common ancestors
         //To add blur effect
         if !UIAccessibility.isReduceTransparencyEnabled {
             blurView.backgroundColor = .clear
@@ -137,6 +184,45 @@ class MainVC: UIViewController,
 //                return
 //        }
 //    }
+>>>>>>> bugs
+=======
+//        //To add blur effect
+//        if !UIAccessibility.isReduceTransparencyEnabled {
+//            blurView.backgroundColor = .clear
+//
+//            let blurEffect = UIBlurEffect(style: .extraLight)
+//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//            //blurEffectView.tag = 100
+//            //always fill the view
+//            blurEffectView.frame = self.blurView.bounds
+//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//            blurView.addSubview(blurEffectView)
+//            blurViewOn = true
+//            print(blurViewOn)
+//    }
+    }
+    
+//    func blurEffect() {
+//        if blurViewOn == true {
+//            if !UIAccessibility.isReduceTransparencyEnabled {
+//                blurView.backgroundColor = .clear
+//
+//                let blurEffect = UIBlurEffect(style: .light)
+//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                //always fill the view
+//                blurEffectView.frame = self.blurView.bounds
+//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//                blurView.addSubview(blurEffectView)
+//
+//            }
+//                else {
+//            blurView.removeFromSuperview()
+//        }
+//    }
+//        }
+
 >>>>>>> bugs
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {

@@ -1,0 +1,6 @@
+framework module Pods_MyDailyDoseOfCourage {
+  umbrella header "Pods-MyDailyDoseOfCourage-umbrella.h"
+
+  export *
+  module * { export * }
+}
