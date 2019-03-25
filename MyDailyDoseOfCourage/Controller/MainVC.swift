@@ -9,7 +9,9 @@
 import UIKit
 import SideMenu
 
-class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideMenuNavigationControllerDelegate {
+class MainVC: UIViewController,
+              UIPopoverPresentationControllerDelegate,
+              UISideMenuNavigationControllerDelegate {
     
     @IBOutlet weak var todayTitleLbl: UILabel!
     @IBOutlet weak var todayImageView: UIImageView!
@@ -27,7 +29,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
     
     @IBOutlet weak var blurView: UIView!
     
-    var blurViewOn = false
+//    var blurViewOn = false
     
     var todayEntry: EntryData?
     var todayBodyData = ""
@@ -47,6 +49,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
     override func viewDidLoad() {
         super.viewDidLoad()
         getJsonData()
+<<<<<<< HEAD
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenu") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
@@ -63,6 +66,9 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
 
         SideMenuManager.default.menuParallaxStrength = 10
 
+=======
+        sideMenuIntitalizer()
+>>>>>>> bugs
     }
     
     //MARK: BUTTON FUNCTIONS
@@ -75,6 +81,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
     
     @IBAction func menuBtnPressed(_ sender: Any) {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+<<<<<<< HEAD
         
         //To add blur effect
         if !UIAccessibility.isReduceTransparencyEnabled {
@@ -112,9 +119,38 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
         }
     }
         }
+=======
+//        blurEffect()
+    }
+    
+//    func blurEffect() {
+//        blurView.isHidden = false
+//            if !UIAccessibility.isReduceTransparencyEnabled {
+//
+//                let blurEffect = UIBlurEffect(style: .light)
+//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                blurEffectView.frame = self.blurView.bounds
+//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//                blurView.addSubview(blurEffectView)
+//            } else {
+//                return
+//        }
+//    }
+>>>>>>> bugs
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-        blurView.removeFromSuperview()
+        blurView.isHidden = true
+    }
+    
+    func sideMenuIntitalizer() {
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenu") as! UISideMenuNavigationController
+        
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuShadowRadius = 50
+        SideMenuManager.default.menuParallaxStrength = 10
     }
     
 //    func removeSubview() {
@@ -160,15 +196,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, UISideM
             destination.entryDate = yesterday
             destination.entryImage = yesterdayImageView.image
 
-        } else if segue.identifier == "tfhSegue" {
-            let vc = segue.destination as! WebVC
-            vc.webUrl = tfhUrl
-        } else if segue.identifier == "youtubeSegue" {
-            let vc = segue.destination as! WebVC
-            vc.webUrl = youtubeUrl
-        } else if segue.identifier == "faecbookSegue" {
-            let vc = segue.destination as! WebVC
-            vc.webUrl = facebookUrl
+        } else {
             return
         }
     }
