@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SideMenu
 
-class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
+class MainVC: UIViewController,
+              UIPopoverPresentationControllerDelegate,
+              UISideMenuNavigationControllerDelegate {
     
     @IBOutlet weak var todayTitleLbl: UILabel!
     @IBOutlet weak var todayImageView: UIImageView!
@@ -23,6 +26,10 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var yesterdayTitleLbl: UILabel!
     @IBOutlet weak var yesterdayImageView: UIImageView!
     @IBOutlet weak var yesterdayScriptureLbl: UILabel!
+    
+    @IBOutlet weak var blurView: UIView!
+    
+//    var blurViewOn = false
     
     var todayEntry: EntryData?
     var todayBodyData = ""
@@ -42,6 +49,26 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getJsonData()
+<<<<<<< HEAD
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenu") as! UISideMenuNavigationController
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.default.menuFadeStatusBar = false
+        
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuShadowRadius = 10
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        removeSubview()
+
+        SideMenuManager.default.menuParallaxStrength = 10
+
+=======
+        sideMenuIntitalizer()
+>>>>>>> bugs
     }
     
     //MARK: BUTTON FUNCTIONS
@@ -51,7 +78,91 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             performSegue(withIdentifier: "tomorrowBtnSegue", sender: nil) }
     @IBAction func yesterdayBtnPressed(_ sender: Any) {
             performSegue(withIdentifier: "yesterdayBtnSegue", sender: nil) }
-    @IBAction func calendarBtnTapped(_ sender: Any) { }
+    
+    @IBAction func menuBtnPressed(_ sender: Any) {
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+<<<<<<< HEAD
+        
+        //To add blur effect
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            blurView.backgroundColor = .clear
+
+            let blurEffect = UIBlurEffect(style: .extraLight)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //blurEffectView.tag = 100
+            //always fill the view
+            blurEffectView.frame = self.blurView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            blurView.addSubview(blurEffectView)
+            blurViewOn = true
+            print(blurViewOn)
+    }
+    }
+    
+    func blurEffect() {
+        if blurViewOn == true {
+            if !UIAccessibility.isReduceTransparencyEnabled {
+                blurView.backgroundColor = .clear
+                
+                let blurEffect = UIBlurEffect(style: .light)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                //always fill the view
+                blurEffectView.frame = self.blurView.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                
+                blurView.addSubview(blurEffectView)
+                
+            }
+                else {
+            blurView.removeFromSuperview()
+        }
+    }
+        }
+=======
+//        blurEffect()
+    }
+    
+//    func blurEffect() {
+//        blurView.isHidden = false
+//            if !UIAccessibility.isReduceTransparencyEnabled {
+//
+//                let blurEffect = UIBlurEffect(style: .light)
+//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                blurEffectView.frame = self.blurView.bounds
+//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//                blurView.addSubview(blurEffectView)
+//            } else {
+//                return
+//        }
+//    }
+>>>>>>> bugs
+    
+    func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+        blurView.isHidden = true
+    }
+    
+    func sideMenuIntitalizer() {
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenu") as! UISideMenuNavigationController
+        
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuShadowRadius = 50
+        SideMenuManager.default.menuParallaxStrength = 10
+    }
+    
+//    func removeSubview() {
+//
+//        if let viewWithTag = self.view.viewWithTag(100) {
+//            viewWithTag.removeFromSuperview()
+//        }else{
+//            print("No!")
+//        }
+//
+//    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -85,15 +196,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
             destination.entryDate = yesterday
             destination.entryImage = yesterdayImageView.image
 
-        } else if segue.identifier == "tfhSegue" {
-            let vc = segue.destination as! WebVC
-            vc.webUrl = tfhUrl
-        } else if segue.identifier == "youtubeSegue" {
-            let vc = segue.destination as! WebVC
-            vc.webUrl = youtubeUrl
-        } else if segue.identifier == "faecbookSegue" {
-            let vc = segue.destination as! WebVC
-            vc.webUrl = facebookUrl
+        } else {
             return
         }
     }
@@ -219,6 +322,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate {
 //        yesterdayPrayerData = yesterdayPrayer
 //    }
     
+
 
 
 
