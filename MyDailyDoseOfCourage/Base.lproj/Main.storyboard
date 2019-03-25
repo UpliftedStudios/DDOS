@@ -344,6 +344,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNH-xe-yxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="2078" y="881"/>
+=======
             <point key="canvasLocation" x="1412" y="956.67166416791611"/>
         </scene>
         <!--AboutVC-->
@@ -468,6 +471,10 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euz-1n-Q3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="1416.8" y="1623.2383808095954"/>
+>>>>>>> bugs
+=======
             <point key="canvasLocation" x="149.59999999999999" y="1716.7916041979013"/>
         </scene>
         <!--BookmarkVC-->
@@ -595,6 +602,7 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5c-Tb-c1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1488.8" y="1716.7916041979013"/>
+>>>>>>> bugs
         </scene>
         <!--Daily Dose Of Courage-->
         <scene sceneID="tne-QT-ifu">
@@ -946,7 +954,15 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Th-yT-lsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <point key="canvasLocation" x="2078" y="1581"/>
+=======
+            <point key="canvasLocation" x="2078" y="1623"/>
+>>>>>>> bugs
+=======
             <point key="canvasLocation" x="151" y="2442"/>
+>>>>>>> bugs
         </scene>
         <!--DetailVC-->
         <scene sceneID="cS2-7e-NqB">
@@ -960,7 +976,7 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                                 <rect key="frame" x="0.0" y="64" width="375" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cx1-J4-VMe">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="802"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaves" translatesAutoresizingMaskIntoConstraints="NO" id="iuj-OP-KP9">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
@@ -969,7 +985,7 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WNW-Rs-DCC">
-                                                <rect key="frame" x="12" y="230" width="351" height="491"/>
+                                                <rect key="frame" x="12" y="230" width="351" height="557"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-Hl-dVX">
                                                         <rect key="frame" x="0.0" y="0.0" width="351" height="30"/>
@@ -1006,7 +1022,7 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IS6-ky-3WY">
-                                                        <rect key="frame" x="0.0" y="40" width="351" height="386.5"/>
+                                                        <rect key="frame" x="0.0" y="40" width="351" height="452.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMk-1D-akU">
                                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="42"/>
@@ -1017,8 +1033,17 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="——————————————" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfG-kV-fZ9">
+                                                                <rect key="frame" x="0.0" y="62" width="351" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="15" id="iSp-nE-j6B"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-if-2tK">
-                                                                <rect key="frame" x="0.0" y="62" width="351" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="97" width="351" height="28.5"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="SCRIPTURE">
                                                                         <attributes>
@@ -1031,16 +1056,16 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="——————————————" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1k-7Y-oO9">
-                                                                <rect key="frame" x="0.0" y="114.5" width="351" height="15"/>
+                                                                <rect key="frame" x="0.0" y="145.5" width="351" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="dz3-zS-MVR"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BODY" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plE-Qh-csR">
-                                                                <rect key="frame" x="0.0" y="149.5" width="351" height="237"/>
+                                                                <rect key="frame" x="0.0" y="180.5" width="351" height="237"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="237" id="IFu-qC-xTU"/>
                                                                 </constraints>
@@ -1048,10 +1073,19 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="——————————————" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMC-pE-eMl">
+                                                                <rect key="frame" x="0.0" y="437.5" width="351" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="15" id="asr-Dl-PKL"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Awm-T2-ecG">
-                                                        <rect key="frame" x="0.0" y="436.5" width="351" height="54.5"/>
+                                                        <rect key="frame" x="0.0" y="502.5" width="351" height="54.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Pray" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-bW-e5s">
                                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="24"/>
@@ -1138,7 +1172,7 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                     <viewLayoutGuide key="safeArea" id="jBc-Tm-VOU"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2715.1999999999998" y="-439.88005997001505"/>
+            <point key="canvasLocation" x="2182" y="-943"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PDb-Zt-Z98">
@@ -1161,7 +1195,11 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1l5-bo-d9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="1404" y="133"/>
+=======
             <point key="canvasLocation" x="1391" y="108"/>
+>>>>>>> bugs
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="vmb-3f-Fuk">
@@ -1193,7 +1231,11 @@ Et est alias perferendis temporibus et. Et necessitatibus dolor et natus. Id nih
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdk-N7-O6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="1322" y="881"/>
+=======
             <point key="canvasLocation" x="764" y="957"/>
+>>>>>>> bugs
         </scene>
     </scenes>
     <resources>
