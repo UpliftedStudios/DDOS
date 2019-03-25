@@ -120,23 +120,6 @@ class MainVC: UIViewController,
     }
         }
 =======
-//        blurEffect()
-    }
-    
-//    func blurEffect() {
-//        blurView.isHidden = false
-//            if !UIAccessibility.isReduceTransparencyEnabled {
-//
-//                let blurEffect = UIBlurEffect(style: .light)
-//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//                blurEffectView.frame = self.blurView.bounds
-//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//
-//                blurView.addSubview(blurEffectView)
-//            } else {
-//                return
-//        }
-//    }
 >>>>>>> bugs
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
